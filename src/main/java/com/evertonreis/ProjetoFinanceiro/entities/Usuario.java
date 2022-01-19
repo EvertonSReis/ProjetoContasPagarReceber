@@ -1,15 +1,18 @@
 package com.evertonreis.ProjetoFinanceiro.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -23,6 +26,10 @@ public class Usuario implements Serializable{
 	private String nome;
 	private String login;
 	private String senha;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "clientes")
+	private List<Conta> contas = new ArrayList<>();
 	
 	public Usuario() {
 	}
@@ -67,9 +74,17 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 
+	public List<Conta> getContas() {
+		return contas;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+	
+	public void alterarSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
