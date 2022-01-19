@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_conta")
 public class Conta implements Serializable{
@@ -23,6 +25,7 @@ public class Conta implements Serializable{
 	private String titular;
 	private Double saldo;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario clientes;
@@ -61,11 +64,13 @@ public class Conta implements Serializable{
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
-	
-	
 
 	public Usuario getClientes() {
 		return clientes;
+	}
+	
+	public void setClientes(Usuario clientes) {
+		this.clientes = clientes;
 	}
 
 	@Override

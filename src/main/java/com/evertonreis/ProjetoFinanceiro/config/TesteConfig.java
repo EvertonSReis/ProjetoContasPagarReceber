@@ -26,10 +26,14 @@ public class TesteConfig implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		
 		Usuario user = new Usuario(null, "Everton Reis", "everton", "123456");
-		Conta cont = new Conta(null, "Everton Reis", 2000.00, user);
+		Usuario user1 = new Usuario(null, "Loize Matos", "loize", "123648");
+		Usuario user2 = new Usuario(null, "Lorenzo Matos", "lorenzo", "134628");
+		Conta cont = new Conta(null, user.getNome(), 2000.00, user);
+		Conta cont1 = new Conta(null, user1.getNome(), 2500.00, user1);
+		Conta cont2 = new Conta(null, user2.getNome(), 1500.00, user2);
 		
-		usuarioRepository.saveAll(Arrays.asList(user));
-		contaRepository.saveAll(Arrays.asList(cont));
+		usuarioRepository.saveAll(Arrays.asList(user, user1, user2));
+		contaRepository.saveAll(Arrays.asList(cont, cont1, cont2));
 		
 		
 	}	
