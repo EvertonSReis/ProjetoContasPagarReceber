@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.evertonreis.ProjetoFinanceiro.entities.Conta;
+import com.evertonreis.ProjetoFinanceiro.entities.ContasReceber;
 import com.evertonreis.ProjetoFinanceiro.entities.Usuario;
 import com.evertonreis.ProjetoFinanceiro.repositories.ContaRepository;
+import com.evertonreis.ProjetoFinanceiro.repositories.ContasReceberRepository;
 import com.evertonreis.ProjetoFinanceiro.repositories.UsuarioRepository;
 
 @Configuration
@@ -21,6 +23,9 @@ public class TesteConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ContaRepository contaRepository;
+	
+	@Autowired
+	private ContasReceberRepository contasReceberRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -35,6 +40,9 @@ public class TesteConfig implements CommandLineRunner {
 		usuarioRepository.saveAll(Arrays.asList(user, user1, user2));
 		contaRepository.saveAll(Arrays.asList(cont, cont1, cont2));
 		
+		ContasReceber cr = new ContasReceber(user, cont, "Pagamento teste", null, null, 150.00);
+		
+		contasReceberRepository.saveAll(Arrays.asList(cr));
 		
 	}	
 	
