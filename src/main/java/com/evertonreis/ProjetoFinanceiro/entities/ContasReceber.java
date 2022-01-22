@@ -1,7 +1,7 @@
 package com.evertonreis.ProjetoFinanceiro.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.Instant;
 import java.util.Objects;
 
 import javax.persistence.EmbeddedId;
@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.evertonreis.ProjetoFinanceiro.entities.pk.ContasPK;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "tb_contasReceber")
@@ -19,14 +20,15 @@ public class ContasReceber implements Serializable {
 	private ContasPK codigo = new ContasPK();
 	
 	private String descricao;
-	private Date dataEmissao;
-	private Date dataRecebimento;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd'T'HH:mm:ss'Z'", timezone = "GMT")
+	private Instant dataEmissao;
+	private Instant dataRecebimento;
 	private Double valorReceber;
 	
 	public ContasReceber() {
 	}
 
-	public ContasReceber(Usuario usuario, Conta conta, String descricao, Date dataEmissao, Date dataRecebimento, Double valorReceber) {
+	public ContasReceber(Usuario usuario, Conta conta, String descricao, Instant dataEmissao, Instant dataRecebimento, Double valorReceber) {
 		super();
 		codigo.setUsuario(usuario);
 		codigo.setConta(conta);
@@ -60,19 +62,19 @@ public class ContasReceber implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public Date getDataEmissao() {
+	public Instant getDataEmissao() {
 		return dataEmissao;
 	}
 
-	public void setDataEmissao(Date dataEmissao) {
+	public void setDataEmissao(Instant dataEmissao) {
 		this.dataEmissao = dataEmissao;
 	}
 
-	public Date getDataRecebimento() {
+	public Instant getDataRecebimento() {
 		return dataRecebimento;
 	}
 
-	public void setDataRecebimento(Date dataRecebimento) {
+	public void setDataRecebimento(Instant dataRecebimento) {
 		this.dataRecebimento = dataRecebimento;
 	}
 

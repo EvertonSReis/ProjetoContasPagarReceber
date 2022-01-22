@@ -1,6 +1,7 @@
 package com.evertonreis.ProjetoFinanceiro.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
 
@@ -18,16 +19,16 @@ public class ContasPagar implements Serializable {
 	@EmbeddedId
 	private ContasPK codigo = new ContasPK();
 	
-	private Date dataVenciemnto;
-	private Date dataEmissao;
-	private Date dataPagamento;
+	private Instant dataVenciemnto;
+	private Instant dataEmissao;
+	private Instant dataPagamento;
 	private String descricao;
 	private Double valor;
 	
 	public ContasPagar() {
 	}
 
-	public ContasPagar(Usuario usuario, Conta conta, Date dataVenciemnto, Date dataEmissao, Date dataPagamento,
+	public ContasPagar(Usuario usuario, Conta conta, Instant dataVenciemnto, Instant dataEmissao, Instant dataPagamento,
 			String descricao, Double valor) {
 		super();
 		codigo.setUsuario(usuario);
@@ -55,27 +56,27 @@ public class ContasPagar implements Serializable {
 		this.codigo.setConta(conta);
 	}
 
-	public Date getDataVenciemnto() {
+	public Instant getDataVenciemnto() {
 		return dataVenciemnto;
 	}
 
-	public void setDataVenciemnto(Date dataVenciemnto) {
+	public void setDataVenciemnto(Instant dataVenciemnto) {
 		this.dataVenciemnto = dataVenciemnto;
 	}
 
-	public Date getDataEmissao() {
+	public Instant getDataEmissao() {
 		return dataEmissao;
 	}
 
-	public void setDataEmissao(Date dataEmissao) {
+	public void setDataEmissao(Instant dataEmissao) {
 		this.dataEmissao = dataEmissao;
 	}
 
-	public Date getDataPagamento() {
+	public Instant getDataPagamento() {
 		return dataPagamento;
 	}
 
-	public void setDataPagamento(Date dataPagamento) {
+	public void setDataPagamento(Instant dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
 
