@@ -10,7 +10,7 @@ import com.evertonreis.ProjetoFinanceiro.entities.Conta;
 import com.evertonreis.ProjetoFinanceiro.entities.Usuario;
 
 @Embeddable
-public class ContasReceberPK implements Serializable {
+public class ContasPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
@@ -48,9 +48,8 @@ public class ContasReceberPK implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ContasReceberPK other = (ContasReceberPK) obj;
+		ContasPK other = (ContasPK) obj;
 		return Objects.equals(conta, other.conta) && Objects.equals(usuario, other.usuario);
 	}
-	
 	
 }

@@ -11,35 +11,38 @@ import javax.persistence.Table;
 import com.evertonreis.ProjetoFinanceiro.entities.pk.ContasPK;
 
 @Entity
-@Table(name = "tb_contasReceber")
-public class ContasReceber implements Serializable {
+@Table(name = "tb_contasPagar")
+public class ContasPagar implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
 	private ContasPK codigo = new ContasPK();
 	
-	private String descricao;
+	private Date dataVenciemnto;
 	private Date dataEmissao;
-	private Date dataRecebimento;
-	private Double valorReceber;
+	private Date dataPagamento;
+	private String descricao;
+	private Double valor;
 	
-	public ContasReceber() {
+	public ContasPagar() {
 	}
 
-	public ContasReceber(Usuario usuario, Conta conta, String descricao, Date dataEmissao, Date dataRecebimento, Double valorReceber) {
+	public ContasPagar(Usuario usuario, Conta conta, Date dataVenciemnto, Date dataEmissao, Date dataPagamento,
+			String descricao, Double valor) {
 		super();
 		codigo.setUsuario(usuario);
 		codigo.setConta(conta);
-		this.descricao = descricao;
+		this.dataVenciemnto = dataVenciemnto;
 		this.dataEmissao = dataEmissao;
-		this.dataRecebimento = dataRecebimento;
-		this.valorReceber = valorReceber;
+		this.dataPagamento = dataPagamento;
+		this.descricao = descricao;
+		this.valor = valor;
 	}
-
+	
 	public Usuario getUsuario() {
 		return codigo.getUsuario();
 	}
-
+	
 	public void setUsuario(Usuario usuario) {
 		this.codigo.setUsuario(usuario);
 	}
@@ -52,12 +55,12 @@ public class ContasReceber implements Serializable {
 		this.codigo.setConta(conta);
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public Date getDataVenciemnto() {
+		return dataVenciemnto;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDataVenciemnto(Date dataVenciemnto) {
+		this.dataVenciemnto = dataVenciemnto;
 	}
 
 	public Date getDataEmissao() {
@@ -68,20 +71,28 @@ public class ContasReceber implements Serializable {
 		this.dataEmissao = dataEmissao;
 	}
 
-	public Date getDataRecebimento() {
-		return dataRecebimento;
+	public Date getDataPagamento() {
+		return dataPagamento;
 	}
 
-	public void setDataRecebimento(Date dataRecebimento) {
-		this.dataRecebimento = dataRecebimento;
+	public void setDataPagamento(Date dataPagamento) {
+		this.dataPagamento = dataPagamento;
 	}
 
-	public Double getValorReceber() {
-		return valorReceber;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setValorReceber(Double valorReceber) {
-		this.valorReceber = valorReceber;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 	@Override
@@ -97,7 +108,9 @@ public class ContasReceber implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ContasReceber other = (ContasReceber) obj;
+		ContasPagar other = (ContasPagar) obj;
 		return Objects.equals(codigo, other.codigo);
 	}
+	
+	
 }
