@@ -2,7 +2,6 @@ package com.evertonreis.ProjetoFinanceiro.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.EmbeddedId;

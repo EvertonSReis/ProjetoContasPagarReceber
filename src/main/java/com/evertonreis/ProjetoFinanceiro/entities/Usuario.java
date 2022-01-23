@@ -75,14 +75,14 @@ public class Usuario implements Serializable{
 	public List<Conta> getContas() {
 		return contas;
 	}
+	
+	public void alterarSenha(String senha) {
+		this.senha = senha;
+	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
-	}
-	
-	public void alterarSenha(String senha) {
-		this.senha = senha;
 	}
 
 	@Override
