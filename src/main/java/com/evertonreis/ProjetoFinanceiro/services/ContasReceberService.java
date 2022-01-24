@@ -24,4 +24,26 @@ public class ContasReceberService {
 		return obj.get();
 	}
 	
+	public ContasReceber insert(ContasReceber obj) {
+		return repository.save(obj);
+	}
+	
+	public void delete(Long codigo) {
+		repository.deleteById(codigo);
+	}
+	
+	public ContasReceber update(ContasReceber obj, Long codigo) {
+		ContasReceber entity = repository.getById(codigo);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(ContasReceber entity, ContasReceber obj) {
+		entity.setDataEmissao(obj.getDataEmissao());
+		entity.setDataRecebimento(obj.getDataRecebimento());
+		entity.setDescricao(obj.getDescricao());
+		entity.setValorReceber(obj.getValorReceber());
+	}
+	
+	
 }

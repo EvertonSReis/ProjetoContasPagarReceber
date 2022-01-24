@@ -26,4 +26,23 @@ public class ContaService {
 		return obj.get();
 	}
 	
+	public Conta insert(Conta obj) {
+		return contaRepository.save(obj);
+	}
+	
+	public void delete(Long id) {
+		contaRepository.deleteById(id);
+	}
+	
+	public Conta update(Long id, Conta obj) {
+		Conta entity = contaRepository.getById(id);
+		updateData(entity, obj);
+		return contaRepository.save(entity);
+	}
+
+
+	private void updateData(Conta entity, Conta obj) {
+		entity.setTitular(obj.getTitular());
+		entity.setSaldo(obj.getSaldo());
+	}
 }

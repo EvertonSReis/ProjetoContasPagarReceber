@@ -23,5 +23,27 @@ public class ContasPagarService {
 		Optional<ContasPagar> obj = repository.findById(codigo);
 		return obj.get();
 	}
+	
+	public ContasPagar insert(ContasPagar obj) {
+		return repository.save(obj);
+	}
+	
+	public void delete(Long codigo) {
+		repository.deleteById(codigo);
+	}
+	
+	public ContasPagar update(Long codigo, ContasPagar obj) {
+		ContasPagar entity = repository.getById(codigo);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(ContasPagar entity, ContasPagar obj) {
+		entity.setDataEmissao(obj.getDataEmissao());
+		entity.setDataPagamento(obj.getDataPagamento());
+		entity.setDataVenciemnto(obj.getDataVenciemnto());
+		entity.setDescricao(obj.getDescricao());
+		entity.setValor(obj.getValor());
+	}
 
 }
