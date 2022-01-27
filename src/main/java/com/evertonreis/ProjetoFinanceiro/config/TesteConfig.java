@@ -12,6 +12,7 @@ import com.evertonreis.ProjetoFinanceiro.entities.Conta;
 import com.evertonreis.ProjetoFinanceiro.entities.ContasPagar;
 import com.evertonreis.ProjetoFinanceiro.entities.ContasReceber;
 import com.evertonreis.ProjetoFinanceiro.entities.Usuario;
+import com.evertonreis.ProjetoFinanceiro.entities.enums.FormaDePagamento;
 import com.evertonreis.ProjetoFinanceiro.repositories.ContaRepository;
 import com.evertonreis.ProjetoFinanceiro.repositories.ContasPagarRepository;
 import com.evertonreis.ProjetoFinanceiro.repositories.ContasReceberRepository;
@@ -50,17 +51,12 @@ public class TesteConfig implements CommandLineRunner {
 		ContasReceber cr1 = new ContasReceber(user1, cont1, "Pagamento teste", Instant.parse("2022-01-20T00:00:00Z"), Instant.parse("2022-01-21T00:00:00Z"), 100.00);
 		ContasReceber cr2 = new ContasReceber(user2, cont2, "Pagamento teste", Instant.parse("2022-01-21T00:00:00Z"), Instant.parse("2022-01-23T00:00:00Z"), 50.00);
 
-		ContasPagar cp = new ContasPagar(user, cont, Instant.parse("2022-01-23T00:00:00Z"), Instant.parse("2022-01-28T00:00:00Z"), null, "test", 80.00);
-		ContasPagar cp1 = new ContasPagar(user1, cont1, Instant.parse("2022-01-28T00:00:00Z"), Instant.parse("2022-01-30T00:00:00Z"), Instant.parse("2022-01-30T00:00:00Z"), "test", 80.00);
-		ContasPagar cp2 = new ContasPagar(user2, cont2, Instant.parse("2022-02-01T00:00:00Z"), Instant.parse("2022-02-02T00:00:00Z"), null, "test", 80.00);
+		ContasPagar cp = new ContasPagar(user, cont, Instant.parse("2022-01-22T00:00:00Z"), Instant.parse("2022-01-22T00:00:00Z"), Instant.parse("2022-01-22T00:00:00Z"), "teste novo", 100.00, FormaDePagamento.DINHEIRO);
+		ContasPagar cp1 = new ContasPagar(user1, cont1, Instant.parse("2022-01-28T00:00:00Z"), Instant.parse("2022-01-30T00:00:00Z"), Instant.parse("2022-01-30T00:00:00Z"), "test", null, FormaDePagamento.CHEQUE);
+		ContasPagar cp2 = new ContasPagar(user2, cont2, Instant.parse("2022-02-01T00:00:00Z"), Instant.parse("2022-02-02T00:00:00Z"), null, "test", null, FormaDePagamento.BOLETO);
 		
 		contasReceberRepository.saveAll(Arrays.asList(cr, cr1, cr2));
 		contasPagarRepository.saveAll(Arrays.asList(cp, cp1,  cp2));
-		
-		
-		
-	}	
-	
-	
 
+	}	
 }

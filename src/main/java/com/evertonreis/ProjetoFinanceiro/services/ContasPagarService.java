@@ -43,7 +43,7 @@ public class ContasPagarService {
 		entity.setDataPagamento(obj.getDataPagamento());
 		entity.setDataVenciemnto(obj.getDataVenciemnto());
 		entity.setDescricao(obj.getDescricao());
-		entity.setValor(obj.getValor());
+		entity.setValorPagar(obj.getValorPagar());
 	}
 
 }

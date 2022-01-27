@@ -6,8 +6,11 @@ import java.util.Objects;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
+import com.evertonreis.ProjetoFinanceiro.entities.enums.FormaDePagamento;
 import com.evertonreis.ProjetoFinanceiro.entities.pk.ContasPK;
 
 @Entity
@@ -22,13 +25,17 @@ public class ContasPagar implements Serializable {
 	private Instant dataEmissao;
 	private Instant dataPagamento;
 	private String descricao;
-	private Double valor;
+	private Double valorPagar;
+	
+	@Enumerated(EnumType.STRING)
+	private FormaDePagamento formaDePagamento;
+	
 	
 	public ContasPagar() {
 	}
 
 	public ContasPagar(Usuario usuario, Conta conta, Instant dataVenciemnto, Instant dataEmissao, Instant dataPagamento,
-			String descricao, Double valor) {
+			String descricao, Double valorPagar, FormaDePagamento formaDePagamento) {
 		super();
 		codigo.setUsuario(usuario);
 		codigo.setConta(conta);
@@ -36,7 +43,8 @@ public class ContasPagar implements Serializable {
 		this.dataEmissao = dataEmissao;
 		this.dataPagamento = dataPagamento;
 		this.descricao = descricao;
-		this.valor = valor;
+		this.valorPagar = valorPagar;
+		this.formaDePagamento = formaDePagamento;
 	}
 	
 	public Usuario getUsuario() {
@@ -86,13 +94,21 @@ public class ContasPagar implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public Double getValor() {
-		return valor;
+	
+	public Double getValorPagar() {
+		return valorPagar;
 	}
 
-	public void setValor(Double valor) {
-		this.valor = valor;
+	public void setValorPagar(Double valorpagar) {
+		this.valorPagar = valorpagar;
+	}
+	
+	public FormaDePagamento getValor() {
+		return formaDePagamento;
+	}
+
+	public void setValor(FormaDePagamento formaDePagamento) {
+		this.formaDePagamento = formaDePagamento;
 	}
 
 	@Override
