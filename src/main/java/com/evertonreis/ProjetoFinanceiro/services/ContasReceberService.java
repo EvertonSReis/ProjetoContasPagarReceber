@@ -19,8 +19,8 @@ public class ContasReceberService {
 		return repository.findAll();
 	}
 	
-	public ContasReceber findById(Long codigo) {
-		Optional<ContasReceber> obj = repository.findById(codigo);
+	public ContasReceber findById(Long id) {
+		Optional<ContasReceber> obj = repository.findById(id);
 		return obj.get();
 	}
 	
@@ -32,8 +32,8 @@ public class ContasReceberService {
 		repository.deleteById(codigo);
 	}
 	
-	public ContasReceber update(ContasReceber obj, Long codigo) {
-		ContasReceber entity = repository.getById(codigo);
+	public ContasReceber update(ContasReceber obj, Long id) {
+		ContasReceber entity = repository.getById(id);
 		updateData(entity, obj);
 		return repository.save(entity);
 	}
@@ -41,7 +41,6 @@ public class ContasReceberService {
 	private void updateData(ContasReceber entity, ContasReceber obj) {
 		entity.setDataEmissao(obj.getDataEmissao());
 		entity.setDataRecebimento(obj.getDataRecebimento());
-		entity.setDescricao(obj.getDescricao());
 		entity.setValorReceber(obj.getValorReceber());
 	}
 	

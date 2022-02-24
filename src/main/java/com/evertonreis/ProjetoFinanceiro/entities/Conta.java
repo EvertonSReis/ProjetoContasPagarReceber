@@ -5,104 +5,33 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
 @Table(name = "tb_conta")
 public class Conta implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	private String titular;
-	private Double saldo;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;;
 	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
-	private Usuario clientes;
+	private Usuario usuario;
 	
-	@OneToMany
-	private Set<ContasReceber> contasReceber = new HashSet<>();
-	
-	public Conta() {
-	}
+//	@ManyToMany
+//	@JoinColumn(name = "id_movimento")
+//	private Movimento movimento;
 
-	public Conta(Long id, String titular, Double saldo, Usuario clientes) {
-		super();
-		this.id = id;
-		this.titular = titular;
-		this.saldo = saldo;
-		this.clientes = clientes;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getTitular() {
-		return titular;
-	}
-
-	public void setTitular(String titular) {
-		this.titular = titular;
-	}
-
-	public Double getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(Double saldo) {
-		this.saldo = saldo;
-	}
-
-	public Usuario getClientes() {
-		return clientes;
-	}
-	
-	public void setClientes(Usuario clientes) {
-		this.clientes = clientes;
-	}
-	
-	public Set<ContasReceber> getContasReceber(){
-		return contasReceber;
-	}
-	
-	public void setContasReceber(Set<ContasReceber> contasReceber) {
-		this.contasReceber = contasReceber;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Conta other = (Conta) obj;
-		return Objects.equals(id, other.id);
-	}
-	
-	
 }

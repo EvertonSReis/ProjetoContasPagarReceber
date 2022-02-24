@@ -42,7 +42,7 @@ public class ContaService {
 
 
 	private void updateData(Conta entity, Conta obj) {
-		entity.setTitular(obj.getTitular());
-		entity.setSaldo(obj.getSaldo());
+//		entity.setMovimento(obj.getMovimento());
+		entity.setUsuario(obj.getUsuario());
 	}
 }

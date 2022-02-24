@@ -8,11 +8,12 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@RequiredArgsConstructor
 @Entity
 @Table(name = "tb_produto")
 public class Produto implements Serializable {
@@ -20,10 +21,24 @@ public class Produto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer idProduto;
+    private Long id;
     private String nomeProduto;
     private Double valorProduto;
     private Integer estoque;
 
-    public void quantidadeEstoque(Integer estoque){}
+    @ManyToOne
+    @JoinColumn(name = "id_produto")
+    private Movimento movimento;
+
+    public Movimento getMovimento() {
+        return movimento;
+    }
+
+    public void setMovimento(Movimento movimento) {
+        this.movimento = movimento;
+    }
+
+    public void quantidadeEstoque(Movimento movimentos){
+        Double totalEstoque = estoque - movimentos.getQuantidadeProduto();
+    }
 }

@@ -21,7 +21,7 @@ import com.evertonreis.ProjetoFinanceiro.services.ContasReceberService;
 @RestController
 @RequestMapping(value = "/receber")
 public class ContasReceberResource {
-	
+
 	@Autowired
 	private ContasReceberService service;
 	
@@ -39,19 +39,20 @@ public class ContasReceberResource {
 	
 	@PostMapping
 	public ResponseEntity<ContasReceber> insert(@RequestBody ContasReceber obj){
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getUsuario()).toUri();
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<ContasReceber> delete(@PathVariable Long codigo){
-		service.delete(codigo);
+	public ResponseEntity<ContasReceber> delete(@PathVariable Long id){
+		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ContasReceber> update(@PathVariable Long codigo, @RequestBody ContasReceber obj){
-		service.update(obj, codigo);
+	public ResponseEntity<ContasReceber> update(@PathVariable Long id, @RequestBody ContasReceber obj){
+		service.update(obj, id);
 		return ResponseEntity.ok().body(obj);
 	}
 }

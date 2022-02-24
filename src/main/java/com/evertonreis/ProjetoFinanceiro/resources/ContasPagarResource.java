@@ -39,7 +39,7 @@ public class ContasPagarResource {
 
 	@PostMapping
 	public ResponseEntity<ContasPagar> insert(@RequestBody ContasPagar obj){
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getUsuario()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
 	

@@ -24,7 +24,7 @@ public class ContaResource {
 	
 	@Autowired
 	private ContaService service;
-	
+
 	@GetMapping
 	public ResponseEntity<List<Conta>> findAll(){
 		List<Conta> list = service.findAll();

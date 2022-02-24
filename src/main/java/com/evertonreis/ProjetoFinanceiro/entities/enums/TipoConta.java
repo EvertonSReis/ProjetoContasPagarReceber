@@ -1,3 +1,5 @@
+package com.evertonreis.ProjetoFinanceiro.entities.enums;
+
 public enum TipoConta {
     RECEBER(0),
     PAGAR(1);

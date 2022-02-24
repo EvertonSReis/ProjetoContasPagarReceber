@@ -1,6 +1,7 @@
 package com.evertonreis.ProjetoFinanceiro.services;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,11 @@ public class UsuarioService {
 	private void updateData(Usuario entity, Usuario obj) {
 		entity.setLogin(obj.getLogin());
 		entity.setNome(obj.getNome());
-		entity.alterarSenha(obj.getSenha());
+		entity.setSenha(obj.getSenha());
 	}
 
+	public boolean autenticacao(Usuario usuario){
+		return Objects.nonNull(
+				this.repository.loginUser(usuario.getLogin(), usuario.getSenha()));
+	}
 }
