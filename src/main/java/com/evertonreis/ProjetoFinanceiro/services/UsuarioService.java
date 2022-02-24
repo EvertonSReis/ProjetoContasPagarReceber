@@ -46,7 +46,7 @@ public class UsuarioService {
 	}
 
 	public boolean autenticacao(Usuario usuario){
-		return Objects.nonNull(
-				this.repository.loginUser(usuario.getLogin(), usuario.getSenha()));
+		Usuario user =  this.repository.loginUser(usuario.getLogin(), usuario.getSenha());
+		return Objects.nonNull(user);
 	}
 }

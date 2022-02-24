@@ -10,8 +10,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 //    @Query(value = "select CASE WHEN cont[1] > 0 THEN 'true' ELSE 'false' END from tb_usuario where id =:id", nativeQuery = true)
 //    public boolean exist(int id);
 
-    @Query(value = "select u from Usuario u where u.login = :login and u.senha = :senha")
-    public Usuario loginUser(String login, String senha);
+    //Ultima tentatica
+    @Query(value = "select * from tb_usuario where login = :login and senha = :senha", nativeQuery = true)
+
+     Usuario loginUser(String login, String senha);
 
 }
-//men repare

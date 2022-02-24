@@ -62,9 +62,9 @@ public class UsuarioResource {
 	}
 
 	@PostMapping("/logar")
-	public ResponseEntity<RetornoValidacaoDto> acesso(Usuario usuario){
+	public ResponseEntity<RetornoValidacaoDto> acesso(@RequestBody Usuario usuario){
 		boolean autenticado = this.service.autenticacao(usuario);
 		return ResponseEntity.ok().body(new RetornoValidacaoDto(autenticado));
 	}
-
+// Posha SAnaca ai tu me quebra kkk, kd o request Body??
 }
