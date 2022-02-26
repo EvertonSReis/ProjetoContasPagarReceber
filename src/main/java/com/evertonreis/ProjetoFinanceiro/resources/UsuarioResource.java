@@ -64,6 +64,7 @@ public class UsuarioResource {
 	@PostMapping("/logar")
 	public ResponseEntity<RetornoValidacaoDto> acesso(@RequestBody Usuario usuario){
 		boolean autenticado = this.service.autenticacao(usuario);
+		if(!autenticado) throw new RuntimeException("Login ou senha invalido");
 		return ResponseEntity.ok().body(new RetornoValidacaoDto(autenticado));
 	}
 // Posha SAnaca ai tu me quebra kkk, kd o request Body??
