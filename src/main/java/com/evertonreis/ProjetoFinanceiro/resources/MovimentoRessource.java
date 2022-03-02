@@ -38,13 +38,13 @@ public class MovimentoRessource {
         return ResponseEntity.ok().body(obj);
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Movimento>  delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping
+    @PutMapping(value = "/{id}")
     public ResponseEntity<Movimento> update(@PathVariable Long id, @RequestBody Movimento obj){
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);

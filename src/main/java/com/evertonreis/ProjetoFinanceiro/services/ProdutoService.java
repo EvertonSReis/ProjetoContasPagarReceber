@@ -34,7 +34,6 @@ public class ProdutoService {
     }
 
     public void updateData(Produto entity, Produto obj) {
-        entity.setId(obj.getId());
         entity.setNomeProduto(obj.getNomeProduto());
         entity.setEstoque(obj.getEstoque());
         entity.setValorProduto(obj.getValorProduto());

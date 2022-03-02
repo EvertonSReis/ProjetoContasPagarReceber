@@ -49,7 +49,7 @@ public class ContasPagarResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@PutMapping
+	@PutMapping(value = "/{id}")
 	public ResponseEntity<ContasPagar> update(@PathVariable Long codigo, @RequestBody ContasPagar obj){
 		obj = service.update(codigo, obj);
 		return ResponseEntity.ok().body(obj);

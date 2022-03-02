@@ -32,7 +32,6 @@ public class ClienteService {
     }
 
     public void updateData(Cliente entity, Cliente obj) {
-        entity.setId(obj.getId());
         entity.setNomeCliente(obj.getNomeCliente());
         entity.setMovimento(obj.getMovimento());
     }
