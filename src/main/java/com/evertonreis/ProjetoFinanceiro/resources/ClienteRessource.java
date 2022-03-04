@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.websocket.server.PathParam;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,11 @@ public class ClienteRessource {
     public ResponseEntity<Cliente> findById(@PathVariable Long id){
         Cliente obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping("/pesquisa")
+    public  ResponseEntity<List<Cliente>> findByPartName(@PathParam("nome") String nome){
+        return ResponseEntity.ok().body(service.findByPartName(nome));
     }
 
     @PostMapping

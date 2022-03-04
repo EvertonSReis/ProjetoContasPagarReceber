@@ -23,6 +23,10 @@ public class ProdutoService {
         return list.get();
     }
 
+    public List<Produto> findByPartName(String nome){
+        return repository.buscarPorParteDoNome(nome);
+    }
+
     public Produto insert(Produto obj){return repository.save(obj);}
 
     public void delete(Long id){repository.deleteById(id);}

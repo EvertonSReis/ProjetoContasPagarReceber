@@ -21,6 +21,10 @@ public class ClienteService {
         return list.get();
     }
 
+    public List<Cliente> findByPartName(String nome){
+        return repository.buscarPorParteDoNome(nome);
+    }
+
     public Cliente insert(Cliente obj){return repository.save(obj);}
 
     public void delete(Long id){repository.deleteById(id);}

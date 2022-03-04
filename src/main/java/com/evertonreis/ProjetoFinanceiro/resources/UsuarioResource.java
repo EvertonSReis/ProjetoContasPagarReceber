@@ -67,5 +67,4 @@ public class UsuarioResource {
 		if(!autenticado) throw new RuntimeException("Login ou senha invalido");
 		return ResponseEntity.ok().body(new RetornoValidacaoDto(autenticado));
 	}
-// Posha SAnaca ai tu me quebra kkk, kd o request Body??
 }
