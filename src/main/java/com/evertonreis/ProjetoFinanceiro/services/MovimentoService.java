@@ -1,5 +1,6 @@
 package com.evertonreis.ProjetoFinanceiro.services;
 
+import com.evertonreis.ProjetoFinanceiro.entities.Cliente;
 import com.evertonreis.ProjetoFinanceiro.entities.Movimento;
 import com.evertonreis.ProjetoFinanceiro.entities.Produto;
 import com.evertonreis.ProjetoFinanceiro.repositories.MovimentoRepository;
@@ -21,6 +22,10 @@ public class MovimentoService {
     public Movimento findById(Long id){
         Optional<Movimento> list = repository.findById(id);
         return list.get();
+    }
+
+    public List<Movimento> findByPartName(String nome){
+        return repository.buscarPorParteDoNome(nome);
     }
 
     public Movimento insert(Movimento obj){return repository.save(obj);}

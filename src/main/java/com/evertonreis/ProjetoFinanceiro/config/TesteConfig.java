@@ -64,10 +64,10 @@ public class TesteConfig implements CommandLineRunner {
 		Produto produto4 = new Produto(null, "Produto 05", 10.00, 700, null);
 		produtoRepository.saveAll(Arrays.asList(produto, produto1, produto2, produto3, produto4));
 
-//		Movimento movimento = new Movimento(null, 10.00, LocalDate.of(2020, 02,01), Arrays.asList(produto, produto1, produto2, produto3, produto4), cliente);
-//		Movimento movimento1 = new Movimento(null, 2.00, LocalDate.of(2020, 02,01), Arrays.asList(produto, produto1, produto2, produto3, produto4), cliente1);
-//		Movimento movimento2 = new Movimento(null, 60.00, LocalDate.of(2020, 02,01), Arrays.asList(produto, produto1, produto2, produto3, produto4), cliente3);
-//		movimentoRepository.saveAll(Arrays.asList());
+		Movimento movimento = new Movimento(null, 10.00, LocalDate.of(2020, 02,01), Arrays.asList(produto, produto1, produto2, produto3, produto4), cliente);
+		Movimento movimento1 = new Movimento(null, 2.00, LocalDate.of(2020, 02,01), Arrays.asList(produto, produto1, produto2, produto3, produto4), cliente1);
+		Movimento movimento2 = new Movimento(null, 60.00, LocalDate.of(2020, 02,01), Arrays.asList(produto, produto1, produto2, produto3, produto4), cliente3);
+		movimentoRepository.saveAll(Arrays.asList(movimento, movimento1, movimento2));
 
 		ContasReceber cr = new ContasReceber(null, null, LocalDate.of(2022,02,01), LocalDate.of(2022,02,02), 150.00);
 		ContasReceber cr1 = new ContasReceber(null, null, null, null, 100.00);
